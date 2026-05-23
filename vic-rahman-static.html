@@ -1,357 +1,1034 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vic Rahman — Creative Studio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ["'PP Neue Montreal'", 'system-ui', '-apple-system', 'sans-serif'],
-            serif: ['Georgia', 'serif'],
-            mono: ['Menlo', 'Monaco', 'Courier New', 'monospace'],
-          }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vic Rahman — Creative Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: [
+                "'PP Neue Montreal'",
+                'system-ui',
+                '-apple-system',
+                'sans-serif',
+              ],
+              serif: ['Georgia', 'serif'],
+              mono: ['Menlo', 'Monaco', 'Courier New', 'monospace'],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @font-face {
+        font-family: 'PP Neue Montreal';
+        src: url('https://assets.website-files.com/6009ec8cda7f305645c9d91b/60176f9bb43e36419997ecfe_PPNeueMontreal-Book.otf')
+          format('opentype');
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'PP Neue Montreal';
+        src: url('https://assets.website-files.com/6009ec8cda7f305645c9d91b/60176f9b39c5673e51a86f5a_PPNeueMontreal-Medium.otf')
+          format('opentype');
+        font-weight: 500;
+        font-display: swap;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          'PP Neue Montreal',
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: #fff;
+        color: #051a24;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
-    }
-  </script>
-  <style>
-    @font-face {
-      font-family: 'PP Neue Montreal';
-      src: url('https://assets.website-files.com/6009ec8cda7f305645c9d91b/60176f9bb43e36419997ecfe_PPNeueMontreal-Book.otf') format('opentype');
-      font-weight: 400;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'PP Neue Montreal';
-      src: url('https://assets.website-files.com/6009ec8cda7f305645c9d91b/60176f9b39c5673e51a86f5a_PPNeueMontreal-Medium.otf') format('opentype');
-      font-weight: 500;
-      font-display: swap;
-    }
+      .fade-in-up {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+      .in-view {
+        /* added by JS */
+      }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marquee 40s linear infinite;
+      }
 
-    html { scroll-behavior: smooth; }
+      .marquee-track:hover {
+        animation-play-state: paused;
+      }
 
-    body {
-      font-family: 'PP Neue Montreal', system-ui, -apple-system, sans-serif;
-      background: #fff;
-      color: #051A24;
-      -webkit-font-smoothing: antialiased;
-    }
+      @media (max-width: 768px) {
+        .marquee-track {
+          animation-duration: 60s;
+        }
+      }
 
-    @keyframes fadeInUp {
-      0%   { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .fade-in-up {
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
-    .in-view { /* added by JS */ }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: #051a24;
+        color: #fff;
+        border: none;
+        border-radius: 9999px;
+        padding: 12px 28px;
+        font-size: 16px;
+        font-family: inherit;
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: none;
+        transition: opacity 0.15s;
+        box-shadow:
+          0 1px 2px 0 rgba(5, 26, 36, 0.1),
+          0 4px 4px 0 rgba(5, 26, 36, 0.09),
+          0 9px 6px 0 rgba(5, 26, 36, 0.05),
+          0 17px 7px 0 rgba(5, 26, 36, 0.01),
+          0 26px 7px 0 rgba(5, 26, 36, 0),
+          inset 0 2px 8px 0 rgba(255, 255, 255, 0.5);
+      }
+      .btn-primary:hover {
+        opacity: 0.9;
+      }
 
-    @keyframes marquee {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 30s linear infinite;
-    }
-    @media (max-width: 768px) {
-      .marquee-track { animation-duration: 10s; }
-    }
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        color: #051a24;
+        border: none;
+        border-radius: 9999px;
+        padding: 12px 28px;
+        font-size: 16px;
+        font-family: inherit;
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: none;
+        transition: opacity 0.15s;
+        box-shadow:
+          0 0 0 0.5px rgba(0, 0, 0, 0.05),
+          0 4px 30px rgba(0, 0, 0, 0.08);
+      }
+      .btn-secondary:hover {
+        opacity: 0.9;
+      }
 
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      background: #051A24;
-      color: #fff;
-      border: none;
-      border-radius: 9999px;
-      padding: 12px 28px;
-      font-size: 16px;
-      font-family: inherit;
-      font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity 0.15s;
-      box-shadow:
-        0 1px 2px 0 rgba(5,26,36,0.1),
-        0 4px 4px 0 rgba(5,26,36,0.09),
-        0 9px 6px 0 rgba(5,26,36,0.05),
-        0 17px 7px 0 rgba(5,26,36,0.01),
-        0 26px 7px 0 rgba(5,26,36,0),
-        inset 0 2px 8px 0 rgba(255,255,255,0.5);
-    }
-    .btn-primary:hover { opacity: 0.9; }
+      /* hide scrollbar */
+      .no-scrollbar {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
 
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff;
-      color: #051A24;
-      border: none;
-      border-radius: 9999px;
-      padding: 12px 28px;
-      font-size: 16px;
-      font-family: inherit;
-      font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity 0.15s;
-      box-shadow: 0 0 0 0.5px rgba(0,0,0,0.05), 0 4px 30px rgba(0,0,0,0.08);
-    }
-    .btn-secondary:hover { opacity: 0.9; }
-
-    /* hide scrollbar */
-    .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-
-    /* partner spawn */
-    .spawn-thumb {
-      position: absolute;
-      width: 96px;
-      height: 96px;
-      object-fit: cover;
-      border-radius: 12px;
-      pointer-events: none;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      animation: spawnFade 1s ease-out forwards;
-    }
-    @keyframes spawnFade {
-      0%   { opacity: 1; transform: scale(1) rotate(var(--rot)); }
-      100% { opacity: 0; transform: scale(0.7) rotate(var(--rot)); }
-    }
-  </style>
-</head>
-<body class="bg-white">
-
-  <!-- ===================== 1. HERO ===================== -->
-  <section style="max-width:440px; margin:0 auto; padding:48px 24px 0; display:flex; flex-direction:column; align-items:center; text-align:center;">
-    <h1 class="fade-in-up" style="animation-delay:0.1s; font-family:Georgia,serif; font-style:italic; font-size:clamp(32px,5vw,44px); font-weight:600; color:#051A24; letter-spacing:-0.02em; margin-bottom:16px;">
-      Vic Rahman
-    </h1>
-    <p class="fade-in-up" style="animation-delay:0.2s; font-family:Menlo,monospace; font-size:12px; color:#051A24; margin-bottom:8px;">
-      Creative studio milik Vic Rahman
-    </p>
-    <h2 class="fade-in-up" style="animation-delay:0.3s; font-size:clamp(28px,4.5vw,44px); line-height:1.1; color:#0D212C; white-space:nowrap; margin-bottom:0;">
-      Bangun <em style="font-family:Georgia,serif;">gelombang baru,</em><br>
-      <em style="font-family:Georgia,serif;">dengan cara berani.</em>
-    </h2>
-    <div class="fade-in-up" style="animation-delay:0.4s; display:flex; flex-direction:column; gap:24px; font-size:15px; color:#051A24; line-height:1.65; margin-top:20px; text-align:left;">
-      <p>Selama tujuh tahun, saya merancang produk-produk digital yang digunakan jutaan orang di seluruh dunia. Studio ini hadir untuk membawa standar pemikiran yang sama kepada para inovator yang tengah membentuk masa depan.</p>
-      <p>Studio ini sengaja dirancang kecil. Saya terlibat langsung di setiap proyek, didukung tim design berpengalaman yang bergerak cepat tanpa mengorbankan kualitas.</p>
-      <p>Kerja sama dimulai dari Rp 75.000.000 per bulan.</p>
-    </div>
-    <div class="fade-in-up" style="animation-delay:0.5s; display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; width:100%;">
-      <a href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20tertarik%20untuk%20berdiskusi%20tentang%20proyek%20kreatif%20saya.%20Apakah%20kita%20bisa%20ngobrol%20lebih%20lanjut%3F" target="_blank" class="btn-primary" style="flex:1; min-width:140px;">Mulai ngobrol</a>
-      <a href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20sudah%20melihat%20proyek-proyek%20Anda%20dan%20sangat%20terkesan.%20Boleh%20kita%20diskusikan%20kolaborasi%3F" target="_blank" class="btn-secondary" style="flex:1; min-width:140px;">Lihat proyek</a>
-    </div>
-  </section>
-
-  <!-- ===================== 2. MARQUEE ===================== -->
-  <div style="overflow:hidden; margin-top:64px; margin-bottom:64px;">
-    <div class="marquee-track" id="marqueeTrack">
-      <!-- JS will populate images -->
-    </div>
-  </div>
-
-  <!-- ===================== 3. TESTIMONIAL QUOTE ===================== -->
-  <section style="padding:48px 24px; max-width:672px; margin:0 auto; display:flex; flex-direction:column; align-items:center; text-align:center;">
-    <div class="fade-in-up" style="animation-delay:0.1s;">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:32px;">
-        <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
-      </svg>
-    </div>
-    <h3 class="fade-in-up" style="animation-delay:0.2s; font-size:clamp(28px,4vw,44px); line-height:1.1; color:#0D212C; margin-bottom:24px;">
-      'Saya membangun <em style="font-family:Georgia,serif;">studio</em> yang selalu saya impikan untuk bekerja sama'
-    </h3>
-    <p class="fade-in-up" style="animation-delay:0.3s; font-style:italic; font-family:Georgia,serif; font-size:14px; color:#273C46; margin-bottom:48px;">Vic Rahman</p>
-    <div class="fade-in-up" style="animation-delay:0.4s; display:flex; align-items:center; justify-content:center; gap:40px; margin-bottom:80px; flex-wrap:wrap;">
-      <span style="font-weight:500; color:#0f172a; font-size:24px; letter-spacing:-0.02em;">Apple</span>
-      <span style="font-weight:500; color:#0f172a; font-size:24px; letter-spacing:-0.02em;">IDEO</span>
-      <span style="font-weight:500; color:#0f172a; font-size:24px; letter-spacing:-0.02em;">Polygon</span>
-    </div>
-    <div class="fade-in-up" style="animation-delay:0.5s; max-width:320px; width:100%;">
-      <img id="parallaxImg"
-        src="https://carisolusi.biz.id/gambarbebas/20260522-052613_Vic%20PP.webp"
-        alt="Vic Rahman"
-        style="width:100%; height:auto; border-radius:16px; box-shadow:0 8px 30px rgba(0,0,0,0.12); transition:transform 0.08s ease-out;" />
-    </div>
-  </section>
-
-  <!-- ===================== 4. PRICING ===================== -->
-  <section style="padding:48px 24px; width:100%;">
-    <div style="max-width:896px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:32px;">
-
-      <!-- Dark Card -->
-      <div class="fade-in-up" style="animation-delay:0.1s; background:#051A24; border-radius:40px; padding:40px 40px 40px 40px; display:flex; flex-direction:column; justify-content:space-between; min-height:360px; box-shadow:inset 0 2px 8px rgba(255,255,255,0.1);">
-        <div>
-          <h3 style="font-size:22px; font-weight:500; color:#F6FCFF; margin-bottom:16px;">Kemitraan Bulanan</h3>
-          <p style="color:#E0EBF0; font-size:15px; line-height:1.65; margin-bottom:48px;">Tim creative design yang berdedikasi penuh.<br>Anda bekerja langsung bersama Vic.</p>
-        </div>
-        <div>
-          <div style="margin-bottom:32px;">
-            <span style="font-size:24px; font-weight:500; color:#F6FCFF; display:block;">Rp 75.000.000</span>
-            <span style="font-size:14px; color:#E0EBF0;">Per Bulan</span>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <a href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20tertarik%20dengan%20paket%20Kemitraan%20Bulanan%20Rp%2075.000.000.%20Boleh%20kita%20diskusikan%20lebih%20lanjut%3F" target="_blank" class="btn-secondary" style="width:100%; font-weight:600;">Mulai ngobrol</a>
-            <a href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20cara%20kerja%20Kemitraan%20Bulanan%20Anda.%20Bisa%20jelaskan%20prosesnya%3F" target="_blank" style="display:flex; align-items:center; justify-content:center; background:transparent; color:#F6FCFF; border:none; border-radius:9999px; padding:12px 28px; font-size:16px; font-family:inherit; font-weight:500; cursor:pointer; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">Cara kerjanya</a>
-          </div>
-        </div>
+      /* partner spawn */
+      .spawn-thumb {
+        position: absolute;
+        width: 96px;
+        height: 96px;
+        object-fit: cover;
+        border-radius: 12px;
+        pointer-events: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        animation: spawnFade 1s ease-out forwards;
+      }
+      @keyframes spawnFade {
+        0% {
+          opacity: 1;
+          transform: scale(1) rotate(var(--rot));
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.7) rotate(var(--rot));
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- ===================== 1. HERO ===================== -->
+    <section
+      style="
+        max-width: 440px;
+        margin: 0 auto;
+        padding: 48px 24px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      "
+    >
+      <h1
+        class="fade-in-up"
+        style="
+          animation-delay: 0.1s;
+          font-family: Georgia, serif;
+          font-style: italic;
+          font-size: clamp(32px, 5vw, 44px);
+          font-weight: 600;
+          color: #051a24;
+          letter-spacing: -0.02em;
+          margin-bottom: 16px;
+        "
+      >
+        Vic Rahman
+      </h1>
+      <p
+        class="fade-in-up"
+        style="
+          animation-delay: 0.2s;
+          font-family: Menlo, monospace;
+          font-size: 12px;
+          color: #051a24;
+          margin-bottom: 8px;
+        "
+      >
+        Creative studio milik Vic Rahman
+      </p>
+      <h2
+        class="fade-in-up"
+        style="
+          animation-delay: 0.3s;
+          font-size: clamp(28px, 4.5vw, 44px);
+          line-height: 1.1;
+          color: #0d212c;
+          white-space: nowrap;
+          margin-bottom: 0;
+        "
+      >
+        Bangun <em style="font-family: Georgia, serif">gelombang baru,</em
+        ><br />
+        <em style="font-family: Georgia, serif">dengan cara berani.</em>
+      </h2>
+      <div
+        class="fade-in-up"
+        style="
+          animation-delay: 0.4s;
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+          font-size: 15px;
+          color: #051a24;
+          line-height: 1.65;
+          margin-top: 20px;
+          text-align: left;
+        "
+      >
+        <p>
+          Selama tujuh tahun, saya merancang produk-produk digital yang
+          digunakan jutaan orang di seluruh dunia. Studio ini hadir untuk
+          membawa standar pemikiran yang sama kepada para inovator yang tengah
+          membentuk masa depan.
+        </p>
+        <p>
+          Studio ini sengaja dirancang kecil. Saya terlibat langsung di setiap
+          proyek, didukung tim design berpengalaman yang bergerak cepat tanpa
+          mengorbankan kualitas.
+        </p>
+        <p>Kerja sama dimulai dari Rp 5.000.000 per bulan.</p>
       </div>
-
-      <!-- Light Card -->
-      <div class="fade-in-up" style="animation-delay:0.2s; background:#fff; border-radius:40px; padding:40px; display:flex; flex-direction:column; justify-content:space-between; min-height:360px; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
-        <div>
-          <h3 style="font-size:22px; font-weight:500; color:#0D212C; margin-bottom:16px;">Proyek Custom</h3>
-          <p style="color:#273C46; font-size:15px; line-height:1.65; margin-bottom:48px;">Scope tetap, timeline pasti.<br>Tim yang sama, standar yang sama.</p>
-        </div>
-        <div>
-          <div style="margin-bottom:32px;">
-            <span style="font-size:24px; font-weight:500; color:#0D212C; display:block;">Rp 75.000.000</span>
-            <span style="font-size:14px; color:#273C46;">Minimum</span>
-          </div>
-          <a href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20tertarik%20dengan%20Proyek%20Custom%20Anda.%20Saya%20ingin%20mendiskusikan%20kebutuhan%20dan%20scope%20proyek%20saya." target="_blank" class="btn-secondary" style="width:100%; font-weight:600; box-shadow:0 1px 2px 0 rgba(5,26,36,0.1),0 4px 4px 0 rgba(5,26,36,0.09),0 9px 6px 0 rgba(5,26,36,0.05),0 17px 7px 0 rgba(5,26,36,0.01),0 26px 7px 0 rgba(5,26,36,0),0 0 0 0.5px rgba(0,0,0,0.05);">Mulai ngobrol</a>
-        </div>
+      <div
+        class="fade-in-up"
+        style="
+          animation-delay: 0.5s;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-top: 20px;
+          width: 100%;
+        "
+      >
+        <a
+          href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20tertarik%20untuk%20berdiskusi%20tentang%20proyek%20kreatif%20saya.%20Apakah%20kita%20bisa%20ngobrol%20lebih%20lanjut%3F"
+          target="_blank"
+          class="btn-primary"
+          style="flex: 1; min-width: 140px"
+          >Mulai ngobrol</a
+        >
+        <a
+          href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20sudah%20melihat%20proyek-proyek%20Anda%20dan%20sangat%20terkesan.%20Boleh%20kita%20diskusikan%20kolaborasi%3F"
+          target="_blank"
+          class="btn-secondary"
+          style="flex: 1; min-width: 140px"
+          >Lihat proyek</a
+        >
       </div>
+    </section>
 
+    <!-- ===================== 2. MARQUEE ===================== -->
+    <div style="overflow: hidden; margin-top: 64px; margin-bottom: 64px">
+      <div class="marquee-track" id="marqueeTrack">
+        <!-- JS will populate images -->
+      </div>
     </div>
-  </section>
 
-  <!-- ===================== 5. TESTIMONIAL CAROUSEL ===================== -->
-  <section style="width:100%; padding:80px 0; overflow:hidden;" id="carouselSection">
-    <div style="max-width:896px; margin:0 auto; padding:0 24px; margin-bottom:48px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:24px;">
-      <h3 style="font-size:30px; color:#0D212C; font-weight:500;">
-        Apa kata para <em style="font-family:Georgia,serif;">builder</em>
+    <!-- ===================== 3. TESTIMONIAL QUOTE ===================== -->
+    <section
+      style="
+        padding: 48px 24px;
+        max-width: 672px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      "
+    >
+      <div class="fade-in-up" style="animation-delay: 0.1s">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#0f172a"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="margin-bottom: 32px"
+        >
+          <path
+            d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
+          />
+          <path
+            d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
+          />
+        </svg>
+      </div>
+      <h3
+        class="fade-in-up"
+        style="
+          animation-delay: 0.2s;
+          font-size: clamp(28px, 4vw, 44px);
+          line-height: 1.1;
+          color: #0d212c;
+          margin-bottom: 24px;
+        "
+      >
+        'Saya membangun <em style="font-family: Georgia, serif">studio</em> yang
+        selalu saya impikan untuk bekerja sama'
       </h3>
-      <div style="display:flex; align-items:center; gap:16px;">
-        <div style="display:flex; gap:4px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <p
+        class="fade-in-up"
+        style="
+          animation-delay: 0.3s;
+          font-style: italic;
+          font-family: Georgia, serif;
+          font-size: 14px;
+          color: #273c46;
+          margin-bottom: 48px;
+        "
+      >
+        Vic Rahman
+      </p>
+      <div
+        class="fade-in-up"
+        style="
+          animation-delay: 0.4s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 40px;
+          margin-bottom: 80px;
+          flex-wrap: wrap;
+        "
+      >
+        <span
+          style="
+            font-weight: 500;
+            color: #0f172a;
+            font-size: 24px;
+            letter-spacing: -0.02em;
+          "
+          >Apple</span
+        >
+        <span
+          style="
+            font-weight: 500;
+            color: #0f172a;
+            font-size: 24px;
+            letter-spacing: -0.02em;
+          "
+          >IDEO</span
+        >
+        <span
+          style="
+            font-weight: 500;
+            color: #0f172a;
+            font-size: 24px;
+            letter-spacing: -0.02em;
+          "
+          >Polygon</span
+        >
+      </div>
+      <div
+        class="fade-in-up"
+        style="animation-delay: 0.5s; max-width: 320px; width: 100%"
+      >
+        <img
+          id="parallaxImg"
+          src="https://carisolusi.biz.id/gambarbebas/20260522-052613_Vic%20PP.webp"
+          alt="Vic Rahman"
+          style="
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transition: transform 0.08s ease-out;
+          "
+        />
+      </div>
+    </section>
+
+    <!-- ===================== 4. PRICING ===================== -->
+    <section style="padding: 48px 24px; width: 100%">
+      <div
+        style="
+          max-width: 896px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 32px;
+        "
+      >
+        <!-- Dark Card -->
+        <div
+          class="fade-in-up"
+          style="
+            animation-delay: 0.1s;
+            background: #051a24;
+            border-radius: 40px;
+            padding: 40px 40px 40px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 360px;
+            box-shadow: inset 0 2px 8px rgba(255, 255, 255, 0.1);
+          "
+        >
+          <div>
+            <h3
+              style="
+                font-size: 22px;
+                font-weight: 500;
+                color: #f6fcff;
+                margin-bottom: 16px;
+              "
+            >
+              Kemitraan Bulanan
+            </h3>
+            <p
+              style="
+                color: #e0ebf0;
+                font-size: 15px;
+                line-height: 1.65;
+                margin-bottom: 48px;
+              "
+            >
+              Tim creative design yang berdedikasi penuh.<br />Anda bekerja
+              langsung bersama Vic.
+            </p>
+          </div>
+          <div>
+            <div style="margin-bottom: 32px">
+              <span
+                style="
+                  font-size: 24px;
+                  font-weight: 500;
+                  color: #f6fcff;
+                  display: block;
+                "
+                >Rp 25.000.000</span
+              >
+              <span style="font-size: 14px; color: #e0ebf0">Per Bulan</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <a
+                href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20tertarik%20dengan%20paket%20Kemitraan%20Bulanan%20Rp%2025.000.000.%20Boleh%20kita%20diskusikan%20lebih%20lanjut%3F"
+                target="_blank"
+                class="btn-secondary"
+                style="width: 100%; font-weight: 600"
+                >Mulai ngobrol</a
+              >
+              <a
+                href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20cara%20kerja%20Kemitraan%20Bulanan%20Anda.%20Bisa%20jelaskan%20prosesnya%3F"
+                target="_blank"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background: transparent;
+                  color: #f6fcff;
+                  border: none;
+                  border-radius: 9999px;
+                  padding: 12px 28px;
+                  font-size: 16px;
+                  font-family: inherit;
+                  font-weight: 500;
+                  cursor: pointer;
+                  text-decoration: none;
+                  transition: background 0.15s;
+                "
+                onmouseover="this.style.background = 'rgba(255,255,255,0.08)'"
+                onmouseout="this.style.background = 'transparent'"
+                >Cara kerjanya</a
+              >
+            </div>
+          </div>
         </div>
-        <span style="color:#0D212C; font-weight:500;">Clutch 5/5</span>
-        <div style="display:flex; gap:12px; margin-left:24px;">
-          <button id="prevBtn" style="width:48px; height:48px; border-radius:50%; border:1px solid rgba(13,33,44,0.2); background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.15s;" onmouseover="this.style.background='rgba(13,33,44,0.05)'" onmouseout="this.style.background='transparent'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D212C" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button id="nextBtn" style="width:48px; height:48px; border-radius:50%; border:1px solid rgba(13,33,44,0.2); background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.15s;" onmouseover="this.style.background='rgba(13,33,44,0.05)'" onmouseout="this.style.background='transparent'">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D212C" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
+
+        <!-- Light Card -->
+        <div
+          class="fade-in-up"
+          style="
+            animation-delay: 0.2s;
+            background: #fff;
+            border-radius: 40px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 360px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+          "
+        >
+          <div>
+            <h3
+              style="
+                font-size: 22px;
+                font-weight: 500;
+                color: #0d212c;
+                margin-bottom: 16px;
+              "
+            >
+              Proyek Custom
+            </h3>
+            <p
+              style="
+                color: #273c46;
+                font-size: 15px;
+                line-height: 1.65;
+                margin-bottom: 48px;
+              "
+            >
+              Scope tetap, timeline pasti.<br />Tim yang sama, standar yang
+              sama.
+            </p>
+          </div>
+          <div>
+            <div style="margin-bottom: 32px">
+              <span
+                style="
+                  font-size: 24px;
+                  font-weight: 500;
+                  color: #0d212c;
+                  display: block;
+                "
+                >Rp 45.000.000</span
+              >
+              <span style="font-size: 14px; color: #273c46">Minimum</span>
+            </div>
+            <a
+              href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20tertarik%20dengan%20Proyek%20Custom%20Anda.%20Saya%20ingin%20mendiskusikan%20kebutuhan%20dan%20scope%20proyek%20saya."
+              target="_blank"
+              class="btn-secondary"
+              style="
+                width: 100%;
+                font-weight: 600;
+                box-shadow:
+                  0 1px 2px 0 rgba(5, 26, 36, 0.1),
+                  0 4px 4px 0 rgba(5, 26, 36, 0.09),
+                  0 9px 6px 0 rgba(5, 26, 36, 0.05),
+                  0 17px 7px 0 rgba(5, 26, 36, 0.01),
+                  0 26px 7px 0 rgba(5, 26, 36, 0),
+                  0 0 0 0.5px rgba(0, 0, 0, 0.05);
+              "
+              >Mulai ngobrol</a
+            >
+          </div>
         </div>
       </div>
-    </div>
-    <div id="carouselTrack" class="no-scrollbar" style="display:flex; gap:24px; overflow-x:auto; scroll-snap-type:x mandatory; padding-left:max(24px, calc((100vw - 896px) / 2)); padding-right:max(24px, calc((100vw - 896px) / 2));">
-      <!-- JS will populate cards -->
-    </div>
-  </section>
+    </section>
 
-  <!-- ===================== 6. PROJECTS ===================== -->
-  <section style="max-width:1200px; margin:0 auto; padding:48px 24px;">
-    <div id="projectsList" style="display:flex; flex-direction:column; gap:80px;">
-      <!-- JS will populate -->
-    </div>
-  </section>
+    <!-- ===================== 5. TESTIMONIAL CAROUSEL ===================== -->
+    <section
+      style="width: 100%; padding: 80px 0; overflow: hidden"
+      id="carouselSection"
+    >
+      <div
+        style="
+          max-width: 896px;
+          margin: 0 auto;
+          padding: 0 24px;
+          margin-bottom: 48px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+          gap: 24px;
+        "
+      >
+        <h3 style="font-size: 30px; color: #0d212c; font-weight: 500">
+          Apa kata para <em style="font-family: Georgia, serif">builder</em>
+        </h3>
+        <div style="display: flex; align-items: center; gap: 16px">
+          <div style="display: flex; gap: 4px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="black">
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="black">
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="black">
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="black">
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="black">
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+          </div>
+          <span style="color: #0d212c; font-weight: 500">Rating 5/5</span>
+          <div style="display: flex; gap: 12px; margin-left: 24px">
+            <button
+              id="prevBtn"
+              style="
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                border: 1px solid rgba(13, 33, 44, 0.2);
+                background: transparent;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.15s;
+              "
+              onmouseover="this.style.background = 'rgba(13,33,44,0.05)'"
+              onmouseout="this.style.background = 'transparent'"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#0D212C"
+                stroke-width="2"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button
+              id="nextBtn"
+              style="
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                border: 1px solid rgba(13, 33, 44, 0.2);
+                background: transparent;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.15s;
+              "
+              onmouseover="this.style.background = 'rgba(13,33,44,0.05)'"
+              onmouseout="this.style.background = 'transparent'"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#0D212C"
+                stroke-width="2"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="carouselTrack"
+        class="no-scrollbar"
+        style="
+          display: flex;
+          gap: 24px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          padding-left: max(24px, calc((100vw - 896px) / 2));
+          padding-right: max(24px, calc((100vw - 896px) / 2));
+        "
+      >
+        <!-- JS will populate cards -->
+      </div>
+    </section>
 
-  <!-- ===================== 7. PARTNER ===================== -->
-  <section style="padding:48px 24px;">
-    <div id="partnerBox" style="max-width:1400px; margin:0 auto; padding:192px 24px; background:#fff; border-radius:40px; box-shadow:0 8px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden; cursor:crosshair;">
-      <div style="position:relative; z-index:10; text-align:center; display:flex; flex-direction:column; align-items:center;">
-        <h2 style="font-family:Georgia,serif; font-style:italic; font-size:clamp(48px,8vw,80px); color:#0D212C; margin-bottom:48px;">
-          Mari berkolaborasi
-        </h2>
-        <a href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20ingin%20berkolaborasi%20dan%20memulai%20proyek%20bersama%20studio%20Anda.%20Kapan%20kita%20bisa%20ngobrol%3F" target="_blank" class="btn-primary" style="padding:8px 24px 8px 8px;">
-          <img src="https://carisolusi.biz.id/gambarbebas/20260522-052613_Vic%20PP.webp" alt="Vic" style="width:40px; height:40px; border-radius:50%; object-fit:cover;" />
-          Mulai ngobrol dengan Vic
-        </a>
+    <!-- ===================== 6. PROJECTS ===================== -->
+    <section style="max-width: 1200px; margin: 0 auto; padding: 48px 24px">
+      <div
+        id="projectsList"
+        style="display: flex; flex-direction: column; gap: 80px"
+      >
+        <!-- JS will populate -->
+      </div>
+    </section>
+
+    <!-- ===================== 7. PARTNER ===================== -->
+    <section style="padding: 48px 24px">
+      <div
+        id="partnerBox"
+        style="
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 192px 24px;
+          background: #fff;
+          border-radius: 40px;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+          cursor: crosshair;
+        "
+      >
+        <div
+          style="
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <h2
+            style="
+              font-family: Georgia, serif;
+              font-style: italic;
+              font-size: clamp(48px, 8vw, 80px);
+              color: #0d212c;
+              margin-bottom: 48px;
+            "
+          >
+            Mari berkolaborasi
+          </h2>
+          <a
+            href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20ingin%20berkolaborasi%20dan%20memulai%20proyek%20bersama%20studio%20Anda.%20Kapan%20kita%20bisa%20ngobrol%3F"
+            target="_blank"
+            class="btn-primary"
+            style="padding: 8px 24px 8px 8px"
+          >
+            <img
+              src="https://carisolusi.biz.id/gambarbebas/20260522-052613_Vic%20PP.webp"
+              alt="Vic"
+              style="
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+              "
+            />
+            Mulai ngobrol dengan Vic
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 8. FOOTER ===================== -->
+    <footer style="max-width: 1200px; margin: 0 auto; padding: 48px 24px">
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 48px;
+          border-top: 1px solid rgba(13, 33, 44, 0.1);
+          padding-top: 48px;
+        "
+      >
+        <a
+          href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20ingin%20menghubungi%20studio%20Anda%20untuk%20diskusi%20awal%20tentang%20kebutuhan%20desain%20saya."
+          target="_blank"
+          class="btn-primary"
+          >Mulai ngobrol</a
+        >
+        <div style="display: flex; gap: 64px; align-items: flex-start">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#0D212C"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg>
+          <div style="display: flex; flex-direction: column; gap: 16px">
+            <a
+              href="#"
+              style="
+                font-size: 16px;
+                color: #051a24;
+                text-decoration: none;
+                transition: opacity 0.15s;
+              "
+              onmouseover="this.style.opacity = '0.7'"
+              onmouseout="this.style.opacity = '1'"
+              >Layanan</a
+            >
+            <a
+              href="#"
+              style="
+                font-size: 16px;
+                color: #051a24;
+                text-decoration: none;
+                transition: opacity 0.15s;
+              "
+              onmouseover="this.style.opacity = '0.7'"
+              onmouseout="this.style.opacity = '1'"
+              >Karya</a
+            >
+            <a
+              href="#"
+              style="
+                font-size: 16px;
+                color: #051a24;
+                text-decoration: none;
+                transition: opacity 0.15s;
+              "
+              onmouseover="this.style.opacity = '0.7'"
+              onmouseout="this.style.opacity = '1'"
+              >Tentang</a
+            >
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 16px">
+            <a
+              href="https://x.com"
+              target="_blank"
+              style="
+                font-size: 16px;
+                color: #051a24;
+                text-decoration: none;
+                transition: opacity 0.15s;
+              "
+              onmouseover="this.style.opacity = '0.7'"
+              onmouseout="this.style.opacity = '1'"
+              >x.com</a
+            >
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              style="
+                font-size: 16px;
+                color: #051a24;
+                text-decoration: none;
+                transition: opacity 0.15s;
+              "
+              onmouseover="this.style.opacity = '0.7'"
+              onmouseout="this.style.opacity = '1'"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===================== 9. COPYRIGHT ===================== -->
+    <div
+      style="
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 24px 128px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        border-top: 1px solid rgba(13, 33, 44, 0.1);
+        margin-top: 48px;
+        font-size: 14px;
+        color: #273c46;
+      "
+    >
+      <div style="display: flex; gap: 16px">
+        <span style="font-weight: 500; color: #051a24">Vic Rahman Studio</span>
+        <span>Depok, Indonesia</span>
+      </div>
+      <span>Desain web oleh Diamant Digital</span>
+    </div>
+
+    <!-- ===================== 10. BOTTOM NAV ===================== -->
+    <div
+      style="
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 50;
+      "
+    >
+      <div
+        style="
+          background: #fff;
+          border-radius: 9999px;
+          padding: 8px 16px;
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          box-shadow:
+            0 8px 30px rgba(0, 0, 0, 0.12),
+            0 0 0 1px rgba(0, 0, 0, 0.05);
+        "
+      >
+        <span
+          style="
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 24px;
+            font-weight: 600;
+            color: #051a24;
+            padding-left: 16px;
+          "
+          >V</span
+        >
+        <a
+          href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20ingin%20ngobrol%20tentang%20bagaimana%20studio%20Anda%20bisa%20membantu%20bisnis%20saya%20berkembang."
+          target="_blank"
+          class="btn-primary"
+          style="padding: 10px 24px; font-size: 14px"
+          >Mulai ngobrol</a
+        >
       </div>
     </div>
-  </section>
 
-  <!-- ===================== 8. FOOTER ===================== -->
-  <footer style="max-width:1200px; margin:0 auto; padding:48px 24px;">
-    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:48px; border-top:1px solid rgba(13,33,44,0.1); padding-top:48px;">
-      <a href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20ingin%20menghubungi%20studio%20Anda%20untuk%20diskusi%20awal%20tentang%20kebutuhan%20desain%20saya." target="_blank" class="btn-primary">Mulai ngobrol</a>
-      <div style="display:flex; gap:64px; align-items:flex-start;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D212C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        <div style="display:flex; flex-direction:column; gap:16px;">
-          <a href="#" style="font-size:16px; color:#051A24; text-decoration:none; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Layanan</a>
-          <a href="#" style="font-size:16px; color:#051A24; text-decoration:none; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Karya</a>
-          <a href="#" style="font-size:16px; color:#051A24; text-decoration:none; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Tentang</a>
-        </div>
-        <div style="display:flex; flex-direction:column; gap:16px;">
-          <a href="https://x.com" target="_blank" style="font-size:16px; color:#051A24; text-decoration:none; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">x.com</a>
-          <a href="https://linkedin.com" target="_blank" style="font-size:16px; color:#051A24; text-decoration:none; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">LinkedIn</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+    <!-- ===================== JAVASCRIPT ===================== -->
+    <script>
+      // ── MARQUEE ──────────────────────────────────────────────
+      const marqueeImages = [
+        'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
+        'https://motionsites.ai/assets/hero-portfolio-cosmic-preview-BpvWJ3Nc.gif',
+        'https://motionsites.ai/assets/hero-velorah-preview-CJNTtbpd.gif',
+        'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
+        'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
+        'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
+        'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
+        'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
+      ];
+      const marqueeTrack = document.getElementById('marqueeTrack');
+      [...marqueeImages, ...marqueeImages].forEach((src) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.style.cssText =
+          'height:280px;object-fit:cover;margin:0 12px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.12);';
+        img.setAttribute('loading', 'lazy');
+        marqueeTrack.appendChild(img);
+      });
 
-  <!-- ===================== 9. COPYRIGHT ===================== -->
-  <div style="max-width:1200px; margin:0 auto; padding:16px 24px 128px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; border-top:1px solid rgba(13,33,44,0.1); margin-top:48px; font-size:14px; color:#273C46;">
-    <div style="display:flex; gap:16px;">
-      <span style="font-weight:500; color:#051A24;">Vic Rahman Studio</span>
-      <span>Austin, USA</span>
-    </div>
-    <span>Desain web oleh Diamant Digital</span>
-  </div>
+      // ── TESTIMONIALS ─────────────────────────────────────────
+      const testimonials = [
+        {
+          name: 'Freddy Santos',
+          role: 'CEO, DataSimpan.id',
+          avatar:
+            'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+          text: 'Dengan arahan yang sangat minim, tim tetap menghasilkan design yang selalu tepat sasaran. Intuisi Vic dalam menciptakan produk yang terasa premium benar-benar tidak tertandingi.',
+        },
+        {
+          name: 'Rizki Pratama',
+          role: 'Founder, Nexgate Indonesia',
+          avatar:
+            'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+          text: 'Vic memimpin pembuatan fundraising deck terbaik yang pernah kami miliki. Para investor secara khusus memuji kualitas dan kedalaman materi presentasinya.',
+        },
+        {
+          name: 'Stephanie',
+          role: 'VP Product, LaunchPad Indonesia',
+          avatar:
+            'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+          text: 'Bekerja bersama Vic mengubah visi produk kami menjadi sesuatu yang dirayakan oleh seluruh tim. Kecepatan eksekusi dan kualitas hasilnya sungguh mengesankan.',
+        },
+        {
+          name: 'Gisele Laurent',
+          role: 'Co-founder, Nexus Labs Indonesia',
+          avatar:
+            'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+          text: 'Kualitas design yang dihasilkan melampaui ekspektasi kami di setiap sprint. Inilah studio yang Anda butuhkan ketika tidak ada ruang untuk kompromi.',
+        },
+        {
+          name: 'Meylin Xu',
+          role: 'Head of Design, Paradigma Digital',
+          avatar:
+            'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
+          text: 'Hasil kerja yang luar biasa dari awal hingga akhir. Bukan kebetulan kami sudah kembali bekerja sama sebanyak tiga kali.',
+        },
+      ];
 
-  <!-- ===================== 10. BOTTOM NAV ===================== -->
-  <div style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:50;">
-    <div style="background:#fff; border-radius:9999px; padding:8px 16px; display:flex; align-items:center; gap:24px; box-shadow:0 8px 30px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.05);">
-      <span style="font-family:Georgia,serif; font-style:italic; font-size:24px; font-weight:600; color:#051A24; padding-left:16px;">V</span>
-      <a href="https://wa.me/6281384072641?text=Halo%20Vic%2C%20saya%20ingin%20ngobrol%20tentang%20bagaimana%20studio%20Anda%20bisa%20membantu%20bisnis%20saya%20berkembang." target="_blank" class="btn-primary" style="padding:10px 24px; font-size:14px;">Mulai ngobrol</a>
-    </div>
-  </div>
-
-  <!-- ===================== JAVASCRIPT ===================== -->
-  <script>
-    // ── MARQUEE ──────────────────────────────────────────────
-    const marqueeImages = [
-      "https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif",
-      "https://motionsites.ai/assets/hero-portfolio-cosmic-preview-BpvWJ3Nc.gif",
-      "https://motionsites.ai/assets/hero-velorah-preview-CJNTtbpd.gif",
-      "https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif",
-      "https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif",
-      "https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif",
-      "https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif",
-      "https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif"
-    ];
-    const marqueeTrack = document.getElementById('marqueeTrack');
-    [...marqueeImages, ...marqueeImages].forEach(src => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.style.cssText = 'height:280px;object-fit:cover;margin:0 12px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.12);';
-      img.setAttribute('loading', 'lazy');
-      marqueeTrack.appendChild(img);
-    });
-
-    // ── TESTIMONIALS ─────────────────────────────────────────
-    const testimonials = [
-      { name:"Budi Santoso",   role:"CEO, DataSimpan.id",          avatar:"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",  text:"Dengan arahan yang sangat minim, tim tetap menghasilkan design yang selalu tepat sasaran. Intuisi Vic dalam menciptakan produk yang terasa premium benar-benar tidak tertandingi." },
-      { name:"Rizki Pratama",  role:"Founder, Nexgate Indonesia",   avatar:"https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop", text:"Vic memimpin pembuatan fundraising deck terbaik yang pernah kami miliki. Para investor secara khusus memuji kualitas dan kedalaman materi presentasinya." },
-      { name:"Andi Wijaya",    role:"VP Product, LaunchPad Indonesia", avatar:"https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop", text:"Bekerja bersama Vic mengubah visi produk kami menjadi sesuatu yang dirayakan oleh seluruh tim. Kecepatan eksekusi dan kualitas hasilnya sungguh mengesankan." },
-      { name:"Dewi Kusumawardani", role:"Co-founder, Nexus Labs Indonesia", avatar:"https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop", text:"Kualitas design yang dihasilkan melampaui ekspektasi kami di setiap sprint. Inilah studio yang Anda butuhkan ketika tidak ada ruang untuk kompromi." },
-      { name:"Fajar Nugroho",  role:"Head of Design, Paradigma Digital", avatar:"https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",  text:"Hasil kerja yang luar biasa dari awal hingga akhir. Bukan kebetulan kami sudah kembali bekerja sama sebanyak tiga kali." }
-    ];
-
-    const carouselTrack = document.getElementById('carouselTrack');
-    [...testimonials, ...testimonials, ...testimonials].forEach(t => {
-      const card = document.createElement('div');
-      card.style.cssText = 'flex:none;width:calc(100vw - 48px);max-width:427px;background:#fff;border-radius:40px;box-shadow:0 4px 16px rgba(0,0,0,0.08);padding:32px 40px;display:flex;flex-direction:column;justify-content:space-between;scroll-snap-align:start;';
-      card.innerHTML = `
+      const carouselTrack = document.getElementById('carouselTrack');
+      [...testimonials, ...testimonials, ...testimonials].forEach((t) => {
+        const card = document.createElement('div');
+        card.style.cssText =
+          'flex:none;width:calc(100vw - 48px);max-width:427px;background:#fff;border-radius:40px;box-shadow:0 4px 16px rgba(0,0,0,0.08);padding:32px 40px;display:flex;flex-direction:column;justify-content:space-between;scroll-snap-align:start;';
+        card.innerHTML = `
         <div>
           <svg style="width:32px;height:32px;color:rgba(13,33,44,0.2);margin-bottom:24px;" viewBox="0 0 24 24" fill="rgba(13,33,44,0.2)">
             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
@@ -365,102 +1042,133 @@
             <p style="font-size:14px;color:#273C46;">→ ${t.role}</p>
           </div>
         </div>`;
-      carouselTrack.appendChild(card);
-    });
+        carouselTrack.appendChild(card);
+      });
 
-    // auto-scroll
-    let carouselPaused = false;
-    document.getElementById('carouselSection').addEventListener('mouseenter', () => carouselPaused = true);
-    document.getElementById('carouselSection').addEventListener('mouseleave', () => carouselPaused = false);
-    setInterval(() => {
-      if (carouselPaused) return;
-      const el = carouselTrack;
-      const cardW = el.children[0]?.offsetWidth || 427;
-      el.scrollBy({ left: cardW + 24, behavior: 'smooth' });
-      if (el.scrollLeft >= (cardW + 24) * testimonials.length * 2) {
-        setTimeout(() => { el.scrollLeft = (cardW + 24) * testimonials.length; }, 800);
-      }
-    }, 3000);
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      const cardW = carouselTrack.children[0]?.offsetWidth || 427;
-      carouselTrack.scrollBy({ left: -(cardW + 24), behavior: 'smooth' });
-    });
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      const cardW = carouselTrack.children[0]?.offsetWidth || 427;
-      carouselTrack.scrollBy({ left: cardW + 24, behavior: 'smooth' });
-    });
+      // auto-scroll
+      let carouselPaused = false;
+      document
+        .getElementById('carouselSection')
+        .addEventListener('mouseenter', () => (carouselPaused = true));
+      document
+        .getElementById('carouselSection')
+        .addEventListener('mouseleave', () => (carouselPaused = false));
+      setInterval(() => {
+        if (carouselPaused) return;
+        const el = carouselTrack;
+        const cardW = el.children[0]?.offsetWidth || 427;
+        el.scrollBy({ left: cardW + 24, behavior: 'smooth' });
+        if (el.scrollLeft >= (cardW + 24) * testimonials.length * 2) {
+          setTimeout(() => {
+            el.scrollLeft = (cardW + 24) * testimonials.length;
+          }, 800);
+        }
+      }, 3000);
+      document.getElementById('prevBtn').addEventListener('click', () => {
+        const cardW = carouselTrack.children[0]?.offsetWidth || 427;
+        carouselTrack.scrollBy({ left: -(cardW + 24), behavior: 'smooth' });
+      });
+      document.getElementById('nextBtn').addEventListener('click', () => {
+        const cardW = carouselTrack.children[0]?.offsetWidth || 427;
+        carouselTrack.scrollBy({ left: cardW + 24, behavior: 'smooth' });
+      });
 
-    // ── PROJECTS ─────────────────────────────────────────────
-    const projects = [
-      { name:"evr",                  desc:"Dari satu ide sederhana hingga jutaan rupiah berhasil dikumpulkan untuk produk AI web3",                       img:"https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif" },
-      { name:"Automation Machines",  desc:"Menyederhanakan proses industrial automation yang kompleks menjadi pengalaman yang intuitif",                  img:"https://motionsites.ai/assets/hero-automation-machines-preview-DlTveRIN.gif" },
-      { name:"xPortfolio",           desc:"Platform portfolio management modern yang elegan dan mudah digunakan",                                         img:"https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif" }
-    ];
+      // ── PROJECTS ─────────────────────────────────────────────
+      const projects = [
+        {
+          name: 'evr',
+          desc: 'Dari satu ide sederhana hingga jutaan rupiah berhasil dikumpulkan untuk produk AI web3',
+          img: 'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
+        },
+        {
+          name: 'Automation Machines',
+          desc: 'Menyederhanakan proses industrial automation yang kompleks menjadi pengalaman yang intuitif',
+          img: 'https://motionsites.ai/assets/hero-automation-machines-preview-DlTveRIN.gif',
+        },
+        {
+          name: 'xPortfolio',
+          desc: 'Platform portfolio management modern yang elegan dan mudah digunakan',
+          img: 'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
+        },
+      ];
 
-    const projectsList = document.getElementById('projectsList');
-    projects.forEach(p => {
-      const item = document.createElement('div');
-      item.style.cssText = 'display:flex;flex-direction:column;gap:24px;opacity:0;transition:opacity 0.8s,transform 0.8s;transform:translateY(30px);';
-      item.innerHTML = `
+      const projectsList = document.getElementById('projectsList');
+      projects.forEach((p) => {
+        const item = document.createElement('div');
+        item.style.cssText =
+          'display:flex;flex-direction:column;gap:24px;opacity:0;transition:opacity 0.8s,transform 0.8s;transform:translateY(30px);';
+        item.innerHTML = `
         <div style="margin-left:clamp(40px,7vw,112px);">
           <h3 style="font-family:Georgia,serif;font-style:italic;font-size:clamp(22px,3vw,30px);font-weight:600;color:#051A24;margin-bottom:8px;">${p.name}</h3>
           <p style="font-size:15px;color:rgba(5,26,36,0.7);">${p.desc}</p>
         </div>
         <img src="${p.img}" alt="${p.name}" loading="lazy" style="width:100%;height:clamp(220px,40vw,500px);object-fit:cover;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.1);" />`;
-      projectsList.appendChild(item);
+        projectsList.appendChild(item);
 
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          item.style.opacity = '1';
-          item.style.transform = 'translateY(0)';
-          observer.disconnect();
-        }
-      }, { threshold: 0.15 });
-      observer.observe(item);
-    });
-
-    // ── PARTNER MOUSE TRAIL ──────────────────────────────────
-    const partnerBox = document.getElementById('partnerBox');
-    let lastSpawn = 0;
-    partnerBox.addEventListener('mousemove', e => {
-      const now = Date.now();
-      if (now - lastSpawn < 80) return;
-      lastSpawn = now;
-      const rect = partnerBox.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const rot = (Math.random() * 20 - 10).toFixed(1) + 'deg';
-      const img = document.createElement('img');
-      img.src = "https://carisolusi.biz.id/gambarbebas/20260522-052613_Vic%20PP.webp";
-      img.className = 'spawn-thumb';
-      img.style.cssText = `left:${x - 48}px;top:${y - 48}px;--rot:${rot};`;
-      partnerBox.appendChild(img);
-      setTimeout(() => img.remove(), 1100);
-    });
-
-    // ── PARALLAX IMAGE ───────────────────────────────────────
-    const parallaxImg = document.getElementById('parallaxImg');
-    window.addEventListener('scroll', () => {
-      if (!parallaxImg) return;
-      const rect = parallaxImg.getBoundingClientRect();
-      const offset = ((rect.top + rect.height / 2) - window.innerHeight / 2) * 0.15;
-      parallaxImg.style.transform = `translateY(${Math.max(-200, Math.min(200, offset))}px)`;
-    }, { passive: true });
-
-    // ── INTERSECTION OBSERVER FOR FADE-IN ────────────────────
-    const fadeEls = document.querySelectorAll('.fade-in-up');
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationPlayState = 'running';
-          fadeObserver.unobserve(entry.target);
-        }
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0)';
+              observer.disconnect();
+            }
+          },
+          { threshold: 0.15 },
+        );
+        observer.observe(item);
       });
-    }, { threshold: 0.1 });
-    fadeEls.forEach(el => {
-      el.style.animationPlayState = 'paused';
-      fadeObserver.observe(el);
-    });
-  </script>
-</body>
+
+      // ── PARTNER MOUSE TRAIL ──────────────────────────────────
+      const partnerBox = document.getElementById('partnerBox');
+      let lastSpawn = 0;
+      partnerBox.addEventListener('mousemove', (e) => {
+        const now = Date.now();
+        if (now - lastSpawn < 80) return;
+        lastSpawn = now;
+        const rect = partnerBox.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rot = (Math.random() * 20 - 10).toFixed(1) + 'deg';
+        const img = document.createElement('img');
+        img.src =
+          'https://carisolusi.biz.id/gambarbebas/20260522-052613_Vic%20PP.webp';
+        img.className = 'spawn-thumb';
+        img.style.cssText = `left:${x - 48}px;top:${y - 48}px;--rot:${rot};`;
+        partnerBox.appendChild(img);
+        setTimeout(() => img.remove(), 1100);
+      });
+
+      // ── PARALLAX IMAGE ───────────────────────────────────────
+      const parallaxImg = document.getElementById('parallaxImg');
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!parallaxImg) return;
+          const rect = parallaxImg.getBoundingClientRect();
+          const offset =
+            (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.15;
+          parallaxImg.style.transform = `translateY(${Math.max(-200, Math.min(200, offset))}px)`;
+        },
+        { passive: true },
+      );
+
+      // ── INTERSECTION OBSERVER FOR FADE-IN ────────────────────
+      const fadeEls = document.querySelectorAll('.fade-in-up');
+      const fadeObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.animationPlayState = 'running';
+              fadeObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      fadeEls.forEach((el) => {
+        el.style.animationPlayState = 'paused';
+        fadeObserver.observe(el);
+      });
+    </script>
+  </body>
 </html>
