@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vic Rahman — Creative Studio</title>
+    <title>Vic Rahman - Pixel Perfect Web Dev</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -1113,7 +1113,7 @@
               observer.disconnect();
             }
           },
-          { threshold: 0.15 },
+          { threshold: 0.15 }
         );
         observer.observe(item);
       });
@@ -1149,7 +1149,7 @@
             (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.15;
           parallaxImg.style.transform = `translateY(${Math.max(-200, Math.min(200, offset))}px)`;
         },
-        { passive: true },
+        { passive: true }
       );
 
       // ── INTERSECTION OBSERVER FOR FADE-IN ────────────────────
@@ -1163,7 +1163,7 @@
             }
           });
         },
-        { threshold: 0.1 },
+        { threshold: 0.1 }
       );
       fadeEls.forEach((el) => {
         el.style.animationPlayState = 'paused';
