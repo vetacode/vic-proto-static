@@ -413,7 +413,7 @@
       >
         <img
           id="parallaxImg"
-          src="https://carisolusi.biz.id/gambarbebas/20260605-112026_50E19B81-EC31-4581-9F23-5607724A4383.PNG"
+          src="https://carisolusi.biz.id/gambarbebas/20260605-113059_vic-pp-pro.webp"
           alt="Vic Rahman"
           style="
             width: 100%;
@@ -1118,7 +1118,7 @@
               observer.disconnect();
             }
           },
-          { threshold: 0.15 }
+          { threshold: 0.15 },
         );
         observer.observe(item);
       });
@@ -1154,7 +1154,7 @@
             (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.15;
           parallaxImg.style.transform = `translateY(${Math.max(-200, Math.min(200, offset))}px)`;
         },
-        { passive: true }
+        { passive: true },
       );
 
       // ── INTERSECTION OBSERVER FOR FADE-IN ────────────────────
@@ -1168,7 +1168,7 @@
             }
           });
         },
-        { threshold: 0.1 }
+        { threshold: 0.1 },
       );
       fadeEls.forEach((el) => {
         el.style.animationPlayState = 'paused';
